@@ -34,6 +34,7 @@ jobs:
       - name: Build APK
         run: |
           unzip -q "KsKitchenCloudBuild-ready (1).zip"
+          sed -i "s/\\\\'/\\&apos;/g" KsKitchenAndroid/app/src/main/res/values/themes.xml
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
           cd KsKitchenAndroid
